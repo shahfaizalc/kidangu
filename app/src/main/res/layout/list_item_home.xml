@@ -1,0 +1,174 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="mainDataModel"
+            type="com.guiado.kidangu.viewmodel.HomeViewModel" />
+
+        <variable
+            name="countriesInfoModel"
+            type="com.guiado.kidangu.model.Feed" />
+
+        <variable
+            name="itemPosition"
+            type="java.lang.Integer" />
+
+        <variable
+            name="simpleListAdapter"
+            type="com.guiado.kidangu.adapter.NewsRecyclerViewAdapter" />
+
+        <variable
+            name="itemClickListener"
+            type="com.guiado.kidangu.listeners.HomeEventListener" />
+
+        <variable
+            name="keyWordsTag"
+            type="java.lang.String" />
+
+        <variable
+            name="postDate"
+            type="java.lang.String" />
+
+
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/dimen_16"
+            card_view:cardCornerRadius="@dimen/dimen_16">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/dimen_8">
+
+                <LinearLayout
+                    android:id="@+id/card_viewed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:paddingBottom="@dimen/dimen_4"
+                            android:onClick="@{() -> itemClickListener.onClickAdSearchListItem(mainDataModel,itemPosition)}"
+                            android:text="@{countriesInfoModel.date}" />
+
+                        <TextView
+                            android:layout_width="18dp"
+                            android:layout_height="22dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="-9dp"
+                            android:layout_toStartOf="@+id/shareimg"
+                            android:paddingStart="@dimen/dimen_4"
+                            android:paddingEnd="@dimen/dimen_4"
+                            android:paddingBottom="@dimen/dimen_4"
+                            android:textSize="@dimen/dimen_12" />
+
+                        <ImageView
+                            android:id="@+id/saving"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toLeftOf="@id/shareimg"
+                            android:layout_centerVertical="true"
+                            android:onClick="@{() -> itemClickListener.launchSave(mainDataModel,itemPosition)}"
+                            android:paddingStart="@dimen/dimen_4"
+                            android:paddingEnd="@dimen/dimen_4"
+                            android:paddingBottom="@dimen/dimen_4"
+                            android:src="@drawable/content_save" />
+
+                        <ImageView
+                            android:id="@+id/shareimg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:onClick="@{() -> itemClickListener.launchShare(mainDataModel,itemPosition)}"
+                            android:paddingStart="@dimen/dimen_4"
+                            android:paddingEnd="@dimen/dimen_4"
+                            android:paddingBottom="@dimen/dimen_4"
+                            android:src="@drawable/share_variant" />
+
+
+                    </RelativeLayout>
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/dimen_4"
+                        android:autoLink="web|email"
+                        android:ellipsize="end"
+                        android:linksClickable="true"
+                        android:maxLines="2"
+                        android:onClick="@{() -> itemClickListener.onClickAdSearchListItem(mainDataModel,itemPosition)}"
+                        android:text="@{countriesInfoModel.title}"
+                        android:textSize="@dimen/dimen_20"
+                        android:textStyle="bold" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:onClick="@{() -> itemClickListener.onClickAdSearchListItem(mainDataModel,itemPosition)}">
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginEnd="0dp"
+                            android:scaleType="centerCrop"
+                            app:imageUrl="@{countriesInfoModel.imageurl}"
+                            app:layout_constraintDimensionRatio="H,16:9"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dimen_4"
+                        android:autoLink="web|email"
+                        android:ellipsize="end"
+                        android:gravity="end"
+                        android:linksClickable="true"
+                        android:maxLines="2"
+                        android:onClick="@{() -> itemClickListener.onClickAdSearchListItem(mainDataModel,itemPosition)}"
+                        android:text="@{countriesInfoModel.author}" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/banner_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+</layout>

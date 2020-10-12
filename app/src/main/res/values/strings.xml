@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Pagirvu</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">Have a good learning</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Saved Stories</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+
+
+    <string name="banner_home_footer">668284914099336_668285340765960</string>
+    <string name="banner_home_footer2">1324860527905579_1386151425109822</string>
+    <string name="banner_home_footer3">1324860527905579_1386151925109772</string>
+
+
+</resources>

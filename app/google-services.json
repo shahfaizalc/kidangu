@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "380000778551",
+    "firebase_url": "https://kitangu-a482e.firebaseio.com",
+    "project_id": "kitangu-a482e",
+    "storage_bucket": "kitangu-a482e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:380000778551:android:30e535f7db0f9280a2c2b2",
+        "android_client_info": {
+          "package_name": "com.guiado.kidangu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "380000778551-6i2o0hg3bgv3rbpeq21akc1cn7qdv78t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvRj4DE7Eylx_DC2iTMgg8E8Q0TiRGzwM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "380000778551-6i2o0hg3bgv3rbpeq21akc1cn7qdv78t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
