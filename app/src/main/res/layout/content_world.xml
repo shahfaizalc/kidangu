@@ -71,7 +71,7 @@
                         android:paddingStart="@dimen/dimen_4"
                         android:paddingEnd="@dimen/dimen_4"
                         android:paddingBottom="@dimen/dimen_4"
-                        android:text="@{countriesInfoModel.date}" />
+                        android:text="@{countriesInfoModel.date.toDate().toLocaleString()}" />
                 </RelativeLayout>
 
 

@@ -22,7 +22,7 @@ class RecyclerLoadMoreHomeHandler(private val countriesViewModel: HomeViewModel,
             override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
 
                 Log.d(TAG, "initRequest: sub scrollListener ")
-                countriesViewModel.doGetTalents()
+               // countriesViewModel.doGetTalents()
             }
         }
         recyclerView.addOnScrollListener(listener)

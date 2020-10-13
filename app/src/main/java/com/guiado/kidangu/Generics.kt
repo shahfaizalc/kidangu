@@ -9,6 +9,9 @@ fun setQuote(activity: Activity ): Kural {
 
     val rand = Random()
     var random = rand.nextInt(12)
+    if(random==0){
+        random=1
+    }
 
     Log.d("rachu","rachuuu "+random);
 
@@ -35,3 +38,4 @@ fun setQuote(activity: Activity ): Kural {
 
 fun getTopics() = listOf("ஆன்மீகம்","வரலாறு","சினிமா","அரசியல்","பொருளாதாரம்","விளையாட்டு","அறிவியல்","கலை & கலாச்சாரம்")
 fun getTopicsEng() = listOf("religion","history","cinema","politics","economy","sports","science","art")
+fun getTopicsIcons() = listOf(R.drawable.oonee,R.drawable.two,R.drawable.three, R.drawable.four,R.drawable.five,R.drawable.sixx,R.drawable.seven,R.drawable.eight)

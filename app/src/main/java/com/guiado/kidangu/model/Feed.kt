@@ -1,12 +1,13 @@
 package com.guiado.kidangu.model
 
+import com.google.firebase.Timestamp
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 class Feed : Serializable {
 
     @SerializedName("adid")
-    var adid: String? = null
+    var adid: Int? = null
 
     @SerializedName("title")
     var title: String? = null
@@ -30,7 +31,8 @@ class Feed : Serializable {
     var author: String? = null
 
     @SerializedName("date")
-    var date: String? = null
+    var date: Timestamp? = null
+
 
     @SerializedName("language")
     var language: String? = null

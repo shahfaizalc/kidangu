@@ -36,9 +36,9 @@
 
 
     <RelativeLayout
-        android:layout_width="@dimen/dimen_160"
+        android:layout_width="@dimen/dimen_150"
         android:onClick="@{() -> itemClickListener.onClickAdSearchListItem(mainDataModel,itemPosition)}"
-        android:layout_height="@dimen/dimen_160">
+        android:layout_height="@dimen/dimen_150">
 
         <androidx.cardview.widget.CardView
             android:onClick="@{() -> itemClickListener.onClickAdSearchListItem(mainDataModel,itemPosition)}"
@@ -47,21 +47,23 @@
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:layout_gravity="center"
-            android:layout_margin="@dimen/dimen_10"
+            android:layout_margin="@dimen/dimen_8"
             card_view:cardCornerRadius="@dimen/dimen_16">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="@dimen/dimen_8">
+                android:padding="@dimen/dimen_4">
 
                 <ImageView
+                    android:id="@+id/imaging"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_margin="@dimen/dimen_24"
-                    android:src="@drawable/axis" />
+                    android:src="@drawable/axis"
+                    />
 
                 <TextView
                     android:layout_width="match_parent"

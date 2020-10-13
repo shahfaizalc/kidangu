@@ -52,6 +52,15 @@ class TopicsViewModel(
         }
 
 
+    @get:Bindable
+    var title: String = String()
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.title)
+        }
+
+
+
     init {
         talentProfilesList = ObservableArrayList<Feed>()
         db = FirebaseFirestore.getInstance()
@@ -65,8 +74,11 @@ class TopicsViewModel(
 
          var listitems = getTopicsEng()
 
+        var titletopic = getTopics();
+        title = titletopic.get(itempostion)
+
         //   query = db.collection("/NEWS/news_arabic/world").whereEqualTo(LANGUAGE_ID, pref).whereEqualTo("regionid", RegionEnum.NIL.name).orderBy("growZoneNumber", Query.Direction.DESCENDING).limit(20)
-        query = db.collection("articles").limit(20).whereArrayContains("category",listitems.get(itempostion))
+        query = db.collection("articles").limit(20).orderBy("date",Query.Direction.ASCENDING).whereArrayContains("category",listitems.get(itempostion))
 
         doGetTalents()
         kural = setQuote(activity)

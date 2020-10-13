@@ -79,7 +79,7 @@ class ShortStoriesViewModel(
          var listitems = getTopicsEng()
 
         //   query = db.collection("/NEWS/news_arabic/world").whereEqualTo(LANGUAGE_ID, pref).whereEqualTo("regionid", RegionEnum.NIL.name).orderBy("growZoneNumber", Query.Direction.DESCENDING).limit(20)
-        query = db.collection("shorts").limit(20)
+        query = db.collection("shorts").limit(20).orderBy("date",Query.Direction.ASCENDING)
 
         doGetTalents()
         kural = setQuote(activity)

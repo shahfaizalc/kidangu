@@ -257,6 +257,7 @@ fun adapter5(recyclerView: RecyclerView, countriesViewModel: HomeViewModel) {
 
     val linearLayoutManager =
         LinearLayoutManager(recyclerView.context, LinearLayoutManager.HORIZONTAL, false);
+
     val listAdapter = News2RecyclerViewAdapter(
         countriesViewModel,
         getTopics()

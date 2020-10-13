@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.guiado.kidangu.listeners.HomeEventListener
 import com.guiado.kidangu.databinding.ListItemTopicsBinding
+import com.guiado.kidangu.getTopicsIcons
 import com.guiado.kidangu.viewmodel.HomeViewModel
 
 /**
@@ -32,10 +33,14 @@ class News2RecyclerViewAdapter(
         Log.d("viewed","view")
         val viewModel = newsViewModel
         viewHolder.binding.simpleListAdapter = this
+
+        viewHolder.binding.imaging.setImageResource(getTopicsIcons()[position])
+
         with(viewHolder.binding) {
             countriesInfoModel = talentProfilesList4[(position)]
             itemPosition = position
             mainDataModel = viewModel
+
             executePendingBindings()
         }
         viewHolder.binding.setItemClickListener(this)

@@ -1,22 +1,20 @@
 package com.guiado.kidangu.viewmodel
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.util.Log
 import android.view.View
-import androidx.databinding.*
+import androidx.databinding.BaseObservable
+import androidx.databinding.Bindable
+import androidx.databinding.ObservableArrayList
 import androidx.fragment.app.FragmentActivity
-import com.google.common.reflect.TypeToken
 import com.google.firebase.firestore.*
 import com.google.gson.Gson
-import com.guiado.kidangu.*
+import com.guiado.kidangu.BR
+import com.guiado.kidangu.SharedPrefUtil
 import com.guiado.kidangu.model.Feed
 import com.guiado.kidangu.model.Kural
-import com.guiado.kidangu.view.FragmentHome
-import com.guiado.kidangu.view.FragmentKural
-import com.guiado.kidangu.view.FragmentShortStories
-import com.guiado.kidangu.view.FragmentTopics
-import com.guiado.kidangu.view.FragmentWorld
+import com.guiado.kidangu.setQuote
+import com.guiado.kidangu.view.*
 
 class HomeViewModel(
     internal var activity: FragmentActivity,
@@ -74,7 +72,7 @@ class HomeViewModel(
 //            pref = LanguageRegionEnum.FR.name
 //        }
         //   query = db.collection("/NEWS/news_arabic/world").whereEqualTo(LANGUAGE_ID, pref).whereEqualTo("regionid", RegionEnum.NIL.name).orderBy("growZoneNumber", Query.Direction.DESCENDING).limit(20)
-        query = db.collection("articles").limit(20)
+        query = db.collection("articles").orderBy("date",Query.Direction.ASCENDING).limit(20)
         imgquery = db.collection("dailyimage")
 
         doGetTalents()
@@ -159,9 +157,9 @@ class HomeViewModel(
     }
 
     var counter =0;
-    fun addTalentsItems(document: QueryDocumentSnapshot) {
+    fun addTalentsItems(adModel: Feed) {
 
-        val adModel = document.toObject(Feed::class.java)
+       // val adModel = document.toObject(Feed::class.java)
 
         Log.d(TAG, "Success getting documents: " + adModel.imageurl)
 
@@ -173,20 +171,20 @@ class HomeViewModel(
         if (!isUpdated) {
             when {
                 counter < 3 -> {
-                    talentProfilesList.add(0, adModel)
+                    talentProfilesList.add( adModel)
                     counter++
                 }
                 counter < 6 -> {
-                    talentProfilesList2.add(0, adModel)
+                    talentProfilesList2.add( adModel)
                     counter++
 
                 }
                 counter < 9 -> {
-                    talentProfilesList3.add(0, adModel)
+                    talentProfilesList3.add( adModel)
                     counter++
                 }
                 counter < 12 -> {
-                    talentProfilesList4.add(0, adModel)
+                    talentProfilesList4.add( adModel)
                     counter++
                 }
 
@@ -200,54 +198,83 @@ class HomeViewModel(
 
         Log.d(TAG, "DOIT doGetTalents:")
 
-        // talentProfilesList.clear()
-        query.addSnapshotListener(MetadataChanges.INCLUDE) { querySnapshot, e ->
-            if (e != null) {
-                Log.w(TAG, "Listen error", e)
-                return@addSnapshotListener
-            }
 
-            if (querySnapshot == null) {
-                Log.i(TAG, "Listen querySnapshot end")
-                return@addSnapshotListener
-            }
+        db.collection("articles").orderBy("date",Query.Direction.DESCENDING).limit(20).get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
 
-            if (querySnapshot.size() < 1) {
-                Log.i(TAG, "Listen querySnapshot end")
-                return@addSnapshotListener
-            }
+                    val gson = Gson()
+                    val json = gson.toJson(document.data )
 
-            Log.w(TAG, "Listen querySnapshot end" + querySnapshot.size())
-
-            val lastVisible = querySnapshot.documents[querySnapshot.size() - 1]
-
-            query = query.startAfter(lastVisible)
+                   var trs = gson.fromJson(json,Feed::class.java)
+                    Log.w(TAG, "Error getting racha: "+trs.date)
 
 
-            for (change in querySnapshot.documentChanges) {
-
-                val source = if (querySnapshot.metadata.isFromCache) {
-                    "local cache"
-                } else {
-                    "server"
+                     addTalentsItems(trs)
                 }
-                if (change.type == DocumentChange.Type.ADDED) {
-                    Log.d(TAG, "New city new: ")
-                    addTalentsItems(change.document)
-                }
-
-                if (change.type == DocumentChange.Type.MODIFIED) {
-                    Log.d(TAG, "New city modified: ")
-                }
-                Log.d(TAG, "Data fetched from $source")
             }
-        }
+            .addOnFailureListener { exception ->
+                Log.w(TAG, "Error getting documents: ", exception)
+            }.addOnCompleteListener { task ->
+                  if (task.isSuccessful) {
+                      // Document found in the offline cache
+                      val document = task.result
+                      Log.d(TAG, "Cached document data: ${document}")
+                  } else {
+                      Log.d(TAG, "Cached get failed: ", task.exception)
+                  }
+              }
+
+
+
+//        // talentProfilesList.clear()
+//        query.addSnapshotListener(MetadataChanges.INCLUDE) { querySnapshot, e ->
+//            if (e != null) {
+//                Log.w(TAG, "Listen error", e)
+//                return@addSnapshotListener
+//            }
+//
+//            if (querySnapshot == null) {
+//                Log.i(TAG, "Listen querySnapshot end")
+//                return@addSnapshotListener
+//            }
+//
+//            if (querySnapshot.size() < 1) {
+//                Log.i(TAG, "Listen querySnapshot end")
+//                return@addSnapshotListener
+//            }
+//
+//            Log.w(TAG, "Listen querySnapshot end" + querySnapshot.size())
+//
+//            val lastVisible = querySnapshot.documents[querySnapshot.size() - 1]
+//
+//            query = query.startAfter(lastVisible)
+//
+//
+//            for (change in querySnapshot.documentChanges) {
+//
+//                val source = if (querySnapshot.metadata.isFromCache) {
+//                    "local cache"
+//                } else {
+//                    "server"
+//                }
+//                if (change.type == DocumentChange.Type.ADDED) {
+//                    Log.d(TAG, "New city new: "+change.document)
+//                    addTalentsItems(change.document)
+//                }
+//
+//                if (change.type == DocumentChange.Type.MODIFIED) {
+//                    Log.d(TAG, "New city modified: ")
+//                }
+//                Log.d(TAG, "Data fetched from $source")
+//            }
+//        }
     }
 
 
     fun doGetTalents2() {
 
-        Log.d(TAG, "DOIT doGetTalents:")
+        Log.d(TAG, "DOIT doGetTalents2:")
 
         // talentProfilesList.clear()
         imgquery.addSnapshotListener(MetadataChanges.INCLUDE) { querySnapshot, e ->

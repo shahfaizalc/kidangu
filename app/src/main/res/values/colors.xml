@@ -7,6 +7,8 @@
     <color name="colorCement">#EBEDEF</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorWhite50">#8Cffffff</color>
+    <color name="colorWhite60">#99ffffff</color>
+
     <color name="colorWhite25">#40ffffff</color>
 
     <color name="colorBlack">#000000</color>
