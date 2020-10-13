@@ -71,7 +71,7 @@
                             android:layout_centerVertical="true"
                             android:paddingBottom="@dimen/dimen_4"
                             android:onClick="@{() -> itemClickListener.onClickAdSearchListItem(mainDataModel,itemPosition)}"
-                            android:text="@{countriesInfoModel.date.toDate().toLocaleString()}" />
+                            android:text="@{countriesInfoModel.date.toDate().toLocaleString().substring(0,12)}" />
 
                         <TextView
                             android:layout_width="18dp"
