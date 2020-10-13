@@ -30,7 +30,7 @@ class  FragmentShortStories : AppCompatActivity() {
 
 
             val areaViewModel =
-                ShortStoriesViewModel(this, this)
+                ShortStoriesViewModel(this)
             binding?.adSearchModel = areaViewModel
 
             adViewLoad()

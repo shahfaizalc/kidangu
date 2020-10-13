@@ -15,9 +15,7 @@ import com.guiado.kidangu.view.FragmentShortStories
 import com.guiado.kidangu.view.FragmentWorld
 
 class ShortStoriesViewModel(
-    internal var activity: FragmentActivity,
-    internal val fragmentProfileInfo: FragmentShortStories
-) // To show list of user images (Gallery)
+    internal var activity: FragmentActivity) // To show list of user images (Gallery)
     : BaseObservable() {
 
     var talentProfilesList: ObservableArrayList<Feed>
