@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.guiado.kidangu.listeners.ShortsEventListener
 import com.guiado.kidangu.databinding.ListItemShortsBinding
 import com.guiado.kidangu.model.Feed
+import com.guiado.kidangu.model.Storiess
 import com.guiado.kidangu.viewmodel.ShortStoriesViewModel
 
 /**
@@ -15,7 +16,7 @@ import com.guiado.kidangu.viewmodel.ShortStoriesViewModel
  */
 class ShortStoriesRecyclerViewAdapter(
     private val newsViewModel: ShortStoriesViewModel,
-    private val talentProfilesList4: ObservableArrayList<Feed>
+    private val talentProfilesList4: ObservableArrayList<Storiess>
 ) :
     RecyclerView.Adapter<ShortStoriesRecyclerViewAdapter.ViewHolder>(),
     ShortsEventListener {

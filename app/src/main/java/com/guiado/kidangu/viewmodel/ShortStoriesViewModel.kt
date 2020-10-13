@@ -7,18 +7,20 @@ import androidx.databinding.*
 import androidx.fragment.app.FragmentActivity
 import com.google.firebase.firestore.*
 import com.google.gson.Gson
+import com.google.longrunning.ListOperationsRequestOrBuilder
 import com.guiado.kidangu.*
-import com.guiado.kidangu.model.Feed
+import com.guiado.kidangu.model.Storiess
 import com.guiado.kidangu.model.Kural
 import com.guiado.kidangu.view.FragmentKural
 import com.guiado.kidangu.view.FragmentShortStories
 import com.guiado.kidangu.view.FragmentWorld
+import com.guiado.kidangu.view.FragmentWorldStory
 
 class ShortStoriesViewModel(
     internal var activity: FragmentActivity) // To show list of user images (Gallery)
     : BaseObservable() {
 
-    var talentProfilesList: ObservableArrayList<Feed>
+    var talentProfilesList: ObservableArrayList<Storiess>
 
  var query: Query
 
@@ -41,15 +43,15 @@ class ShortStoriesViewModel(
         }
 
 
-    fun openFragment55(postAdModel: Feed) {
+    fun openFragment55(postAdModel: Storiess) {
         shareAppURL(postAdModel)
     }
 
 
-    private fun shareAppURL(articleUrl: Feed?) {
+    private fun shareAppURL(articleUrl: Storiess?) {
         val sharingIntent = Intent(Intent.ACTION_SEND)
         sharingIntent.type = "text/plain"
-        val shareBody = articleUrl?.title+"\n"+articleUrl?.articleUrl+"\n\n For more articles : install our app https://play.google.com/store/apps/details?id=com.guiado.kidangu"
+        val shareBody = "\n\n For more articles : install our app https://play.google.com/store/apps/details?id=com.guiado.kidangu"
         sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody)
         activity.startActivity(Intent.createChooser(sharingIntent, "Share via"))
     }
@@ -64,7 +66,7 @@ class ShortStoriesViewModel(
 
 
     init {
-        talentProfilesList = ObservableArrayList<Feed>()
+        talentProfilesList = ObservableArrayList<Storiess>()
         db = FirebaseFirestore.getInstance()
 
 //        var pref = SharedPreference(activity.applicationContext).getValueString(LANGUAGE_ID)
@@ -87,21 +89,32 @@ class ShortStoriesViewModel(
 
 
 
-    fun openShare(postAdModel: Feed, position: Int) {
+    fun openShare(postAdModel: Storiess, position: Int) {
         //  openChooser(postAdModel, activity)
     }
 
 
-    fun openFragment2(postAdModel: Feed, position: Int) {
+    fun openFragment2(postAdModel: Storiess, position: Int) {
 //        val intentNext = Intent(activity, WebViewActivity::class.java)
 //        intentNext.putExtra(Constants.POSTAD_OBJECT, postAdModel.newsurl)
 //        activity.startActivity(intentNext)
     }
 
-    fun openFragment3(postAdModel: Feed) {
-        val intentNext = Intent(activity, FragmentWorld::class.java)
-        intentNext.putExtra("feed", postAdModel)
+    fun openFragment3(postAdModel: Storiess) {
+
+
+        val gson = Gson()
+       // gson.toJson(postAdModel)
+
+
+        val intentNext = Intent(activity, FragmentWorldStory::class.java)
+        intentNext.putExtra("feed", gson.toJson(postAdModel) )
         activity.startActivity(intentNext)
+//
+//
+//        val intentNext = Intent(activity, FragmentWorld::class.java)
+//        intentNext.putExtra("feed", postAdModel)
+//        activity.startActivity(intentNext)
     }
 
     fun openFragment4(postAdModel: Int) {
@@ -131,9 +144,9 @@ class ShortStoriesViewModel(
 
     fun addTalentsItems(document: QueryDocumentSnapshot) {
 
-        val adModel = document.toObject(Feed::class.java)
+        val adModel = document.toObject(Storiess::class.java)
 
-        Log.d(TAG, "Success getting documents: " + adModel.imageurl)
+        Log.d(TAG, "Success getting documents: " + adModel.title)
 
         //  if (!adModel.postedBy.equals(mAuth.currentUser!!.uid) && (adModel.eventState.ordinal == EventStatus.SHOWING.ordinal)) {
 

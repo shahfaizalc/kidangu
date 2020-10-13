@@ -554,6 +554,76 @@ fun adapter(recyclerView: RecyclerView, countriesViewModel: HomeViewModel) {
 }
 
 
+
+@BindingAdapter("app:searchRecycler10")
+fun adapter10(recyclerView: RecyclerView, countriesViewModel: WorldStoryViewModel) {
+
+    val linearLayoutManager =
+        LinearLayoutManager(recyclerView.context)//, LinearLayoutManager.HORIZONTAL, false);
+    val listAdapter = WorldSoryAdapter(countriesViewModel)
+    val bindingAdapter = RecyclerLoadMoreWorldStoryHandler(
+        countriesViewModel,
+        listAdapter
+    )
+    bindingAdapter.scrollListener(recyclerView, linearLayoutManager)
+    recyclerView.addItemDecoration(CirclePagerIndicatorDecoration())
+    //val snapHelper: SnapHelper = PagerSnapHelper()
+    //snapHelper.attachToRecyclerView(recyclerView)
+
+    recyclerView.layoutManager = linearLayoutManager as RecyclerView.LayoutManager
+    recyclerView.adapter = listAdapter
+    countriesViewModel.talentProfilesList.addOnListChangedCallback(object :
+        ObservableList.OnListChangedCallback<ObservableList<String>>() {
+        override fun onItemRangeRemoved(
+            sender: ObservableList<String>?,
+            positionStart: Int,
+            itemCount: Int
+        ) {
+            Log.d("rach", "rach1")
+        }
+
+        override fun onItemRangeMoved(
+            sender: ObservableList<String>?,
+            fromPosition: Int,
+            toPosition: Int,
+            itemCount: Int
+        ) {
+            Log.d("rach", "rach2")
+        }
+
+        override fun onItemRangeInserted(
+            sender: ObservableList<String>?,
+            positionStart: Int,
+            itemCount: Int
+        ) {
+            Log.d("rach", "rach3")
+            bindingAdapter.resetRecycleView(recyclerView)
+            if (countriesViewModel.resetScrrollListener) {
+                bindingAdapter.scrollListener(recyclerView, linearLayoutManager)
+                countriesViewModel.resetScrrollListener = false
+            }
+
+        }
+
+        override fun onItemRangeChanged(
+            sender: ObservableList<String>?,
+            positionStart: Int,
+            itemCount: Int
+        ) {
+            Log.d("rach", "rach4")
+            bindingAdapter.resetRecycleView(recyclerView)
+        }
+
+        override fun onChanged(sender: ObservableList<String>?) {
+            Log.d("rach", "rach5")
+            bindingAdapter.resetRecycleView(recyclerView)
+        }
+
+    });
+
+}
+
+
 @BindingAdapter("app:searchRecycler")
 fun adapter(recyclerView: RecyclerView, countriesViewModel: WorldViewModel) {
 
