@@ -5,11 +5,11 @@
 
         <variable
             name="mainDataModel"
-            type="com.guiado.kidangu.viewmodel.SavedStoriesViewModel" />
+            type="com.guiado.projectbox.viewmodel.SavedStoriesViewModel" />
 
         <variable
             name="countriesInfoModel"
-            type="com.guiado.kidangu.model.Feed" />
+            type="com.guiado.projectbox.model.Feed" />
 
         <variable
             name="itemPosition"
@@ -17,11 +17,11 @@
 
         <variable
             name="simpleListAdapter"
-            type="com.guiado.kidangu.adapter.SavedStoriesRecyclerViewAdapter" />
+            type="com.guiado.projectbox.adapter.SavedStoriesRecyclerViewAdapter" />
 
         <variable
             name="itemClickListener"
-            type="com.guiado.kidangu.listeners.SavedEventListener" />
+            type="com.guiado.projectbox.listeners.SavedEventListener" />
 
         <variable
             name="keyWordsTag"

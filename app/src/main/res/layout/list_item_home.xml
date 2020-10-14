@@ -5,23 +5,20 @@
 
         <variable
             name="mainDataModel"
-            type="com.guiado.kidangu.viewmodel.HomeViewModel" />
+            type="com.guiado.projectbox.viewmodel.HomeViewModel" />
 
         <variable
             name="countriesInfoModel"
-            type="com.guiado.kidangu.model.Feed" />
+            type="com.guiado.projectbox.model.Feed" />
 
         <variable
             name="itemPosition"
             type="java.lang.Integer" />
 
-        <variable
-            name="simpleListAdapter"
-            type="com.guiado.kidangu.adapter.NewsRecyclerViewAdapter" />
 
         <variable
             name="itemClickListener"
-            type="com.guiado.kidangu.listeners.HomeEventListener" />
+            type="com.guiado.projectbox.listeners.HomeEventListener" />
 
         <variable
             name="keyWordsTag"
@@ -178,95 +175,6 @@
             android:weightSum="3"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <androidx.cardview.widget.CardView
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/dimen_4"
-                card_view:cardCornerRadius="@dimen/dimen_16">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="@dimen/dimen_8">
-                         <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/dimen_4"
-                            android:autoLink="web|email"
-                            android:ellipsize="end"
-                            android:linksClickable="true"
-                            android:maxLines="3"
-                            android:onClick="@{() -> itemClickListener.onClickAdSearchListItem(mainDataModel,itemPosition)}"
-                            android:text="@{countriesInfoModel.thread.get(0)}"
-                            android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-
-            <androidx.cardview.widget.CardView
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/dimen_4"
-                card_view:cardCornerRadius="@dimen/dimen_16">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="@dimen/dimen_8">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/dimen_4"
-                        android:autoLink="web|email"
-                        android:ellipsize="end"
-                        android:linksClickable="true"
-                        android:maxLines="3"
-                        android:onClick="@{() -> itemClickListener.onClickAdSearchListItem(mainDataModel,itemPosition)}"
-                        android:text="@{countriesInfoModel.thread.get(1)}"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/dimen_4"
-                card_view:cardCornerRadius="@dimen/dimen_16">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="@dimen/dimen_8">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/dimen_4"
-                        android:autoLink="web|email"
-                        android:ellipsize="end"
-                        android:linksClickable="true"
-                        android:maxLines="3"
-                        android:onClick="@{() -> itemClickListener.onClickAdSearchListItem(mainDataModel,itemPosition)}"
-                        android:text="@{countriesInfoModel.thread.get(2)}"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
 
         </LinearLayout>
 

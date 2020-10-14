@@ -5,7 +5,7 @@
 
         <variable
             name="mainDataModel"
-            type="com.guiado.kidangu.viewmodel.HomeViewModel" />
+            type="com.guiado.projectbox.viewmodel.HomeViewModel" />
 
         <variable
             name="countriesInfoModel"
@@ -15,13 +15,10 @@
             name="itemPosition"
             type="java.lang.Integer" />
 
-        <variable
-            name="simpleListAdapter"
-            type="com.guiado.kidangu.adapter.News2RecyclerViewAdapter" />
 
         <variable
             name="itemClickListener"
-            type="com.guiado.kidangu.listeners.HomeEventListener" />
+            type="com.guiado.projectbox.listeners.HomeEventListener" />
 
         <variable
             name="keyWordsTag"

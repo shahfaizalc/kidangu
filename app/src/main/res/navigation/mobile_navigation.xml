@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.guiado.kidangu.view.FragmentHome"
+        android:name="com.guiado.projectbox.view.FragmentHome"
         android:label="@string/menu_home" />
 
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.guiado.kidangu.view.FragmentSavedStories"
+        android:name="com.guiado.projectbox.view.FragmentSavedStories"
         android:label="@string/menu_home" />
 
     <fragment
         android:id="@+id/nav_short"
-        android:name="com.guiado.kidangu.view.FragmentShortStoriesActivity"
+        android:name="com.guiado.projectbox.view.FragmentShortStoriesActivity"
         android:label="@string/menu_home" />
 </navigation>

@@ -1,6 +1,19 @@
 <resources>
-    <string name="app_name">Pagirvu</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="app_name">University Projects</string>
+
+
+    <string-array name="Languages">
+     <item>Select Location</item>
+     <item>Chennai</item>
+    <item>Bangalore</item>
+    <item>Hyderabad</item>
+    <item>Delhi</item>
+    <item>Mumbai</item>
+    <item>Cochin</item>
+</string-array>
+
+
+<string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">Have a good learning</string>

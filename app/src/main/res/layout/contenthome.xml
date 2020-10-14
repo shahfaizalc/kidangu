@@ -7,44 +7,26 @@
 
         <variable
             name="adSearchModel"
-            type="com.guiado.kidangu.viewmodel.HomeViewModel" />
+            type="com.guiado.projectbox.viewmodel.HomeViewModel" />
 
         <variable
             name="countriesInfoModel"
-            type="com.guiado.kidangu.model.Feed" />
+            type="com.guiado.projectbox.model.Feed" />
     </data>
 
 
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:fillViewport="true">
-
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/viewA"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorCement"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/banner_container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="@dimen/dimen_4"
-                />
 
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_4"
-                android:layout_marginStart="@dimen/dimen_16"
-                android:layout_marginEnd="@dimen/dimen_16"
-                android:alpha=".1"
-                android:background="@color/colorBlack" />
 
             <TextView
+                android:id="@+id/toptile"
+                android:layout_alignParentTop="true"
               android:textStyle="bold"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_width="wrap_content"
@@ -52,192 +34,40 @@
                 android:layout_marginStart="@dimen/dimen_16"
                 android:layout_marginTop="@dimen/dimen_16"
                 android:paddingBottom="@dimen/dimen_4"
-                android:text="புதிய கட்டுரை" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerUser"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:paddingBottom="@dimen/dimen_20"
-                android:scrollbars="vertical"
-                app:searchRecycler="@{adSearchModel}" />
-
-            <TextView
-                android:textColor="@color/colorPrimaryDark"
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dimen_16"
-                android:layout_marginTop="@dimen/dimen_16"
-                android:paddingBottom="@dimen/dimen_4"
-                android:text="தலைப்பு" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerUser5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:paddingBottom="@dimen/dimen_20"
-                android:scrollbars="vertical"
-                app:searchRecycler5="@{adSearchModel}" />
-
+                android:textSize="@dimen/dimen_24"
+                android:text="Welcome!" />
 
 
             <TextView
-                android:textColor="@color/colorPrimaryDark"
-                android:layout_width="wrap_content"
-                android:textStyle="bold"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dimen_16"
-                android:layout_marginTop="@dimen/dimen_16"
-                android:paddingBottom="@dimen/dimen_4"
-                android:text="முந்தைய கட்டுரைகள்" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerUser2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:paddingBottom="@dimen/dimen_20"
-                android:scrollbars="vertical"
-                app:searchRecycler2="@{adSearchModel}" />
-
-
-
-            <androidx.cardview.widget.CardView
-                android:onClick="@{adSearchModel.onNextButtonClick2()}"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/dimen_8"
-                card_view:cardCornerRadius="@dimen/dimen_16">
-
-                <RelativeLayout
-                    android:onClick="@{adSearchModel.onNextButtonClick2()}"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="@dimen/dimen_4">
-
-                    <ImageView
-                        android:layout_centerInParent="true"
-                        android:id="@+id/imaging"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="@dimen/dimen_24"
-                        android:src="@drawable/axis"
-                        />
-
-                    <TextView
-                        android:layout_marginBottom="@dimen/dimen_24"
-                        android:layout_alignParentBottom="true"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_horizontal"
-                        android:textSize="@dimen/dimen_32"
-                        android:text="சிறுகதைகள்"
-                        android:textStyle="bold" />
-                </RelativeLayout>
-
-
-            </androidx.cardview.widget.CardView>
-
-
-            <TextView
-                android:textColor="@color/colorPrimaryDark"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:layout_marginStart="@dimen/dimen_16"
-                android:layout_marginTop="@dimen/dimen_16"
-                android:paddingBottom="@dimen/dimen_4"
-                android:text="முந்தைய கட்டுரைகள்" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerUser3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:paddingBottom="@dimen/dimen_20"
-                android:scrollbars="vertical"
-                app:searchRecycler3="@{adSearchModel}" />
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/kdjlakdj"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_gravity="center"
-                    android:layout_margin="@dimen/dimen_16"
-                    card_view:cardCornerRadius="@dimen/dimen_16">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="@dimen/dimen_8">
-
-                        <TextView
-                            android:layout_marginStart="@dimen/dimen_16"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="@dimen/dimen_4"
-                            android:text="பேசும் படம் "
-                            android:textSize="@dimen/dimen_10"
-                            android:textStyle="bold" />
-
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <ImageView
-                                android:layout_width="0dp"
-                                android:layout_height="0dp"
-                                android:layout_marginStart="0dp"
-                                android:layout_marginTop="0dp"
-                                android:layout_marginEnd="0dp"
-                                app:imageUrl="@{adSearchModel.quoteimg}"
-                                android:scaleType="centerCrop"
-                                app:layout_constraintDimensionRatio="H,16:9"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-            </RelativeLayout>
-
-            <TextView
+                android:layout_below="@+id/toptile"
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:layout_marginStart="@dimen/dimen_16"
                 android:layout_marginTop="@dimen/dimen_16"
                 android:paddingBottom="@dimen/dimen_4"
-                android:text="முந்தைய கட்டுரைகள்" />
+                android:text="Final Year Projects" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerUser4"
+            <Spinner
+                android:layout_centerInParent="true"
+                android:layout_marginTop="@dimen/dimen_48"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/categorySpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/Languages"
+                android:selectedItemPosition="@={adSearchModel.selectedItemPosition}"
+                />
+            <LinearLayout
+                android:layout_alignParentBottom="true"
+                android:id="@+id/banner_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:paddingBottom="@dimen/dimen_20"
-                android:scrollbars="vertical"
-                app:searchRecycler4="@{adSearchModel}" />
+                android:orientation="vertical"
+                android:layout_marginBottom="@dimen/dimen_4" />
 
-        </LinearLayout>
-    </ScrollView>
+        </RelativeLayout>
 </layout>

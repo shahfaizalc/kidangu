@@ -1,4 +1,4 @@
-package com.guiado.kidangu
+package com.guiado.projectbox
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,7 +19,7 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.guiado.kidangu" +
+        assertEquals("com.guiado.projectbox" +
                 "", appContext.packageName)
     }
 }

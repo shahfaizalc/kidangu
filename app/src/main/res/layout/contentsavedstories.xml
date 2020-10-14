@@ -7,11 +7,11 @@
 
         <variable
             name="adSearchModel"
-            type="com.guiado.kidangu.viewmodel.SavedStoriesViewModel" />
+            type="com.guiado.projectbox.viewmodel.SavedStoriesViewModel" />
 
         <variable
             name="countriesInfoModel"
-            type="com.guiado.kidangu.model.Feed" />
+            type="com.guiado.projectbox.model.Feed" />
     </data>
 
 
