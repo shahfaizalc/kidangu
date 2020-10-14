@@ -10,9 +10,7 @@ import com.google.gson.Gson
 import com.guiado.kidangu.*
 import com.guiado.kidangu.model.Feed
 import com.guiado.kidangu.model.Kural
-import com.guiado.kidangu.view.FragmentKural
 import com.guiado.kidangu.view.FragmentSavedStories
-import com.guiado.kidangu.view.FragmentShortStories
 import com.guiado.kidangu.view.FragmentWorld
 
 class SavedStoriesViewModel(
@@ -26,7 +24,6 @@ class SavedStoriesViewModel(
 
     var resetScrrollListener: Boolean = false;
 
-    var kural: Kural
 
     companion object {
         private val TAG = "DiscussionModel"
@@ -68,8 +65,6 @@ class SavedStoriesViewModel(
         talentProfilesList = ObservableArrayList<Feed>()
 
 
-        kural = setQuote(activity)
-        name = kural.line1 + "\n" + kural.line2
 
 
 
@@ -113,13 +108,6 @@ class SavedStoriesViewModel(
     fun onNextButtonClick() = View.OnClickListener() {
         Log.d(TAG, "Success getting OnClickListener: ")
 
-        val gson = Gson()
-        gson.toJson(kural)
-
-
-        val intentNext = Intent(activity, FragmentKural::class.java)
-        intentNext.putExtra("kural", gson.toJson(kural))
-        activity.startActivity(intentNext)
     }
 
 

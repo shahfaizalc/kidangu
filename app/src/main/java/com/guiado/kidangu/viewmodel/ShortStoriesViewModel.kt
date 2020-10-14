@@ -7,12 +7,9 @@ import androidx.databinding.*
 import androidx.fragment.app.FragmentActivity
 import com.google.firebase.firestore.*
 import com.google.gson.Gson
-import com.google.longrunning.ListOperationsRequestOrBuilder
 import com.guiado.kidangu.*
 import com.guiado.kidangu.model.Storiess
 import com.guiado.kidangu.model.Kural
-import com.guiado.kidangu.view.FragmentKural
-import com.guiado.kidangu.view.FragmentShortStories
 import com.guiado.kidangu.view.FragmentWorld
 import com.guiado.kidangu.view.FragmentWorldStory
 
@@ -28,7 +25,6 @@ class ShortStoriesViewModel(
 
     var resetScrrollListener: Boolean = false;
 
-    var kural : Kural
 
     companion object {
         private val TAG = "DiscussionModel"
@@ -82,8 +78,6 @@ class ShortStoriesViewModel(
         query = db.collection("shorts").limit(20).orderBy("date",Query.Direction.ASCENDING)
 
         doGetTalents()
-        kural = setQuote(activity)
-        name = kural.line1 +"\n"+kural.line2
     }
 
 
@@ -132,13 +126,7 @@ class ShortStoriesViewModel(
     fun onNextButtonClick() = View.OnClickListener() {
         Log.d(TAG, "Success getting OnClickListener: ")
 
-        val gson = Gson()
-        gson.toJson(kural)
 
-
-        val intentNext = Intent(activity, FragmentKural::class.java)
-        intentNext.putExtra("kural", gson.toJson(kural) )
-        activity.startActivity(intentNext)
     }
 
 

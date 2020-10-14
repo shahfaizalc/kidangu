@@ -8,10 +8,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.facebook.ads.AdSize
 import com.facebook.ads.AdView
+import com.google.gson.Gson
 import com.guiado.kidangu.R
 import com.guiado.kidangu.viewmodel.WorldViewModel
 import com.guiado.kidangu.databinding.ContentWorldBinding
 import com.guiado.kidangu.model.Feed
+import com.guiado.kidangu.model.Storiess
 
 class  FragmentWorld : AppCompatActivity() {
 
@@ -28,10 +30,15 @@ class  FragmentWorld : AppCompatActivity() {
              binding = DataBindingUtil.setContentView(this,
                  R.layout.content_world
              )
-             val blogUrl : Feed = intent.getSerializableExtra("feed") as Feed
+             val blogUrl  = intent.getSerializableExtra("feed") as String
+
+
+             var gson = Gson();
+             var output =   gson.fromJson(blogUrl, Feed::class.java)
+
 
              val areaViewModel =
-                 WorldViewModel(this, this, blogUrl)
+                 WorldViewModel(this, this, output)
              binding?.adSearchModel = areaViewModel
               val nameObserver = Observer<Feed> { firstName ->
                 binding!!.countriesInfoModel = firstName

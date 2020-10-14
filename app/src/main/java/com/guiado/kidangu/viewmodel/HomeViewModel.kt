@@ -13,7 +13,6 @@ import com.guiado.kidangu.BR
 import com.guiado.kidangu.SharedPrefUtil
 import com.guiado.kidangu.model.Feed
 import com.guiado.kidangu.model.Kural
-import com.guiado.kidangu.setQuote
 import com.guiado.kidangu.view.*
 
 class HomeViewModel(
@@ -35,7 +34,6 @@ class HomeViewModel(
 
     var resetScrrollListener: Boolean = false;
 
-    var kural : Kural
 
     companion object {
         private val TAG = "DiscussionModel"
@@ -43,7 +41,7 @@ class HomeViewModel(
 
 
     @get:Bindable
-    var name: String = String()
+    var name: String = ""
         set(value) {
             field = value
             notifyPropertyChanged(BR.name)
@@ -72,13 +70,11 @@ class HomeViewModel(
 //            pref = LanguageRegionEnum.FR.name
 //        }
         //   query = db.collection("/NEWS/news_arabic/world").whereEqualTo(LANGUAGE_ID, pref).whereEqualTo("regionid", RegionEnum.NIL.name).orderBy("growZoneNumber", Query.Direction.DESCENDING).limit(20)
-        query = db.collection("articles").orderBy("date",Query.Direction.ASCENDING).limit(20)
+        query = db.collection("articles").orderBy("date",Query.Direction.ASCENDING).limit(30)
         imgquery = db.collection("dailyimage")
 
         doGetTalents()
         doGetTalents2()
-        kural = setQuote(activity)
-        name = kural.line1 +"\n"+kural.line2
     }
 
 
@@ -97,8 +93,11 @@ class HomeViewModel(
     }
 
     fun openFragment3(postAdModel: Feed) {
+
+        val gson = Gson()
+
         val intentNext = Intent(activity, FragmentWorld::class.java)
-        intentNext.putExtra("feed", postAdModel)
+        intentNext.putExtra("feed", gson.toJson(postAdModel) )
         activity.startActivity(intentNext)
     }
 
@@ -138,13 +137,6 @@ class HomeViewModel(
     fun onNextButtonClick() = View.OnClickListener() {
         Log.d(TAG, "Success getting OnClickListener: ")
 
-        val gson = Gson()
-        gson.toJson(kural)
-
-
-        val intentNext = Intent(activity, FragmentKural::class.java)
-        intentNext.putExtra("kural", gson.toJson(kural) )
-        activity.startActivity(intentNext)
     }
 
 
@@ -163,27 +155,22 @@ class HomeViewModel(
 
         Log.d(TAG, "Success getting documents: " + adModel.imageurl)
 
-        //  if (!adModel.postedBy.equals(mAuth.currentUser!!.uid) && (adModel.eventState.ordinal == EventStatus.SHOWING.ordinal)) {
-
-
-        //  getKeyWords(talentProfilesList,adModel)
-
         if (!isUpdated) {
             when {
                 counter < 3 -> {
                     talentProfilesList.add( adModel)
                     counter++
                 }
-                counter < 6 -> {
+                counter < 7 -> {
                     talentProfilesList2.add( adModel)
                     counter++
 
                 }
-                counter < 9 -> {
+                counter < 12 -> {
                     talentProfilesList3.add( adModel)
                     counter++
                 }
-                counter < 12 -> {
+                else -> {
                     talentProfilesList4.add( adModel)
                     counter++
                 }

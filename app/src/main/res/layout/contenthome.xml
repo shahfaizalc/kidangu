@@ -36,52 +36,6 @@
                 />
 
 
-            <RelativeLayout
-                android:onClick="@{adSearchModel.onNextButtonClick()}"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <androidx.cardview.widget.CardView
-                    android:onClick="@{adSearchModel.onNextButtonClick()}"
-                    android:id="@+id/card_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_gravity="center"
-                    android:layout_margin="@dimen/dimen_12"
-                    card_view:cardCornerRadius="@dimen/dimen_16">
-
-                    <LinearLayout
-                        android:onClick="@{adSearchModel.onNextButtonClick()}"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="@dimen/dimen_4">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:onClick="@{adSearchModel.onNextButtonClick()}"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="@dimen/dimen_4"
-                            android:text="செய்யுள்"
-                            android:textSize="@dimen/dimen_10"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:onClick="@{adSearchModel.onNextButtonClick()}"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/dimen_4"
-                            android:ellipsize="end"
-                            android:maxLines="3"
-                            android:text="@={adSearchModel.name}"/>
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-            </RelativeLayout>
-
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_4"

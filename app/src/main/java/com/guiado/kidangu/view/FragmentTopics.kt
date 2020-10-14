@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.guiado.kidangu.R
-import com.guiado.kidangu.databinding.ContentKuralBinding
 import com.guiado.kidangu.databinding.ContenthomeBinding
 import com.guiado.kidangu.databinding.ContenttopicsBinding
 import com.guiado.kidangu.viewmodel.TopicsViewModel

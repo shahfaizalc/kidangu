@@ -10,7 +10,6 @@ import com.google.gson.Gson
 import com.guiado.kidangu.*
 import com.guiado.kidangu.model.Feed
 import com.guiado.kidangu.model.Kural
-import com.guiado.kidangu.view.FragmentKural
 import com.guiado.kidangu.view.FragmentTopics
 import com.guiado.kidangu.view.FragmentWorld
 
@@ -23,13 +22,13 @@ class TopicsViewModel(
 
     var talentProfilesList: ObservableArrayList<Feed>
 
- var query: Query
+    var query: Query
 
     var db: FirebaseFirestore
 
     var resetScrrollListener: Boolean = false;
 
-    var kural : Kural
+   // var kural : Kural
 
     companion object {
         private val TAG = "DiscussionModel"
@@ -81,8 +80,8 @@ class TopicsViewModel(
         query = db.collection("articles").limit(20).orderBy("date",Query.Direction.ASCENDING).whereArrayContains("category",listitems.get(itempostion))
 
         doGetTalents()
-        kural = setQuote(activity)
-        name = kural.line1 +"\n"+kural.line2
+      //  kural = setQuote(activity)
+     //   name = kural.line1 +"\n"+kural.line2
     }
 
 
@@ -133,13 +132,7 @@ class TopicsViewModel(
     fun onNextButtonClick() = View.OnClickListener() {
         Log.d(TAG, "Success getting OnClickListener: ")
 
-        val gson = Gson()
-        gson.toJson(kural)
 
-
-        val intentNext = Intent(activity, FragmentKural::class.java)
-        intentNext.putExtra("kural", gson.toJson(kural) )
-        activity.startActivity(intentNext)
     }
 
 

@@ -1,5 +1,6 @@
 package com.guiado.kidangu.theapp
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.text.Spannable
 import android.text.SpannableString
@@ -19,8 +20,7 @@ import com.guiado.kidangu.handler.*
 import com.guiado.kidangu.viewmodel.*
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Transformation
-
-
+import com.bumptech.glide.Glide
 
 
 
@@ -692,6 +692,7 @@ fun adapter(recyclerView: RecyclerView, countriesViewModel: WorldViewModel) {
 
 }
 
+@SuppressLint("UseCompatLoadingForDrawables")
 @BindingAdapter("app:imageUrl")
 fun loadImage(view: ImageView, imageUrl: String?) {
     val i = TextUtils.isEmpty(imageUrl)
@@ -708,6 +709,14 @@ fun loadImage(view: ImageView, imageUrl: String?) {
             .placeholder(R.drawable.ic_launcher_foreground)
             .transform(transformation)
             .into(view)
+//
+//
+//        Glide.with(view.context)
+//            .load(imageUrl)
+//            .placeholder(R.drawable.ic_launcher_foreground)
+//            .dontAnimate()
+//            .into(view);
+
     }
 }
 
