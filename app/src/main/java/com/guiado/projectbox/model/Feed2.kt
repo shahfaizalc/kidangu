@@ -11,22 +11,22 @@ class Feed2 : Serializable {
     var title: String? = null
 
     @SerializedName("abstract")
-    var imageurl: String? = null
+    var abstract: String? = null
 
     @SerializedName("address")
-    var baseurl: String? = null
+    var address: String? = null
 
     @SerializedName("centername")
-    var articleUrl: String? = null
+    var centername: String? = null
 
     @SerializedName("contact")
-    var author: String? = null
+    var contact: String? = null
 
     @SerializedName("department")
-    var language: String? = null
+    var department: String? = null
 
     @SerializedName("location")
-    val category: String? = null
+    val location: String? = null
 
     @SerializedName("subject")
     val subject: String? = null

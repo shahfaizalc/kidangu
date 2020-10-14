@@ -7,7 +7,7 @@ import androidx.databinding.*
 import androidx.fragment.app.FragmentActivity
 import com.google.firebase.firestore.*
 import com.guiado.projectbox.*
-import com.guiado.projectbox.model.Feed
+import com.guiado.projectbox.model.Feed2
 import com.guiado.projectbox.view.FragmentTopics
 
 class TopicsViewModel(
@@ -17,7 +17,7 @@ class TopicsViewModel(
 ) // To show list of user images (Gallery)
     : BaseObservable() {
 
-    var talentProfilesList: ObservableArrayList<Feed>
+    var talentProfilesList: ObservableArrayList<Feed2>
 
     var query: Query
 
@@ -58,7 +58,7 @@ class TopicsViewModel(
 
 
     init {
-        talentProfilesList = ObservableArrayList<Feed>()
+        talentProfilesList = ObservableArrayList<Feed2>()
         db = FirebaseFirestore.getInstance()
 
 //        var pref = SharedPreference(activity.applicationContext).getValueString(LANGUAGE_ID)
@@ -74,7 +74,7 @@ class TopicsViewModel(
         title = titletopic.get(itempostion)
 
         //   query = db.collection("/NEWS/news_arabic/world").whereEqualTo(LANGUAGE_ID, pref).whereEqualTo("regionid", RegionEnum.NIL.name).orderBy("growZoneNumber", Query.Direction.DESCENDING).limit(20)
-        query = db.collection("articles").limit(20).orderBy("date",Query.Direction.ASCENDING).whereArrayContains("category",listitems.get(itempostion))
+        query = db.collection("chennai").limit(20)
 
         doGetTalents()
       //  kural = setQuote(activity)
@@ -82,15 +82,15 @@ class TopicsViewModel(
     }
 
 
-    fun openFragment55(postAdModel: Feed) {
+    fun openFragment55(postAdModel: Feed2) {
         shareAppURL(postAdModel)
     }
 
 
-    private fun shareAppURL(articleUrl: Feed?) {
+    private fun shareAppURL(articleUrl: Feed2?) {
         val sharingIntent = Intent(Intent.ACTION_SEND)
         sharingIntent.type = "text/plain"
-        val shareBody = articleUrl?.title+"\n"+articleUrl?.articleUrl+"\n\n For more articles : install our app https://play.google.com/store/apps/details?id=com.guiado.projectbox"
+        val shareBody = articleUrl?.title+"\n"+articleUrl?.title+"\n\n For more articles : install our app https://play.google.com/store/apps/details?id=com.guiado.projectbox"
         sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody)
         activity.startActivity(Intent.createChooser(sharingIntent, "Share via"))
     }
@@ -98,7 +98,7 @@ class TopicsViewModel(
 
 
 
-    fun openFragment3(postAdModel: Feed) {
+    fun openFragment3(postAdModel: Feed2) {
 //        val intentNext = Intent(activity, FragmentWorld::class.java)
 //        intentNext.putExtra("feed", postAdModel)
 //        activity.startActivity(intentNext)
@@ -118,9 +118,9 @@ class TopicsViewModel(
 
     fun addTalentsItems(document: QueryDocumentSnapshot) {
 
-        val adModel = document.toObject(Feed::class.java)
+        val adModel = document.toObject(Feed2::class.java)
 
-        Log.d(TAG, "Success getting documents: " + adModel.imageurl)
+        Log.d(TAG, "Success getting documents: " + adModel.title)
 
         //  if (!adModel.postedBy.equals(mAuth.currentUser!!.uid) && (adModel.eventState.ordinal == EventStatus.SHOWING.ordinal)) {
 
@@ -141,17 +141,17 @@ class TopicsViewModel(
         // talentProfilesList.clear()
         query.addSnapshotListener(MetadataChanges.INCLUDE) { querySnapshot, e ->
             if (e != null) {
-                Log.w(TAG, "Listen error", e)
+                Log.w(TAG, "Listenn error", e)
                 return@addSnapshotListener
             }
 
             if (querySnapshot == null) {
-                Log.i(TAG, "Listen querySnapshot end")
+                Log.i(TAG, "Listenn querySnapshot end")
                 return@addSnapshotListener
             }
 
             if (querySnapshot.size() < 1) {
-                Log.i(TAG, "Listen querySnapshot end")
+                Log.i(TAG, "Listenn querySnapshot end")
                 return@addSnapshotListener
             }
 

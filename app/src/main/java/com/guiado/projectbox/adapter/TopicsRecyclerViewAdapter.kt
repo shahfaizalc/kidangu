@@ -7,7 +7,7 @@ import androidx.databinding.ObservableArrayList
 import androidx.recyclerview.widget.RecyclerView
 import com.guiado.projectbox.listeners.TopicListEventListener
 import com.guiado.projectbox.databinding.ListItemTopiclistBinding
-import com.guiado.projectbox.model.Feed
+import com.guiado.projectbox.model.Feed2
 import com.guiado.projectbox.viewmodel.TopicsViewModel
 
 /**
@@ -15,7 +15,7 @@ import com.guiado.projectbox.viewmodel.TopicsViewModel
  */
 class TopicsRecyclerViewAdapter(
     private val newsViewModel: TopicsViewModel,
-    private val talentProfilesList4: ObservableArrayList<Feed>
+    private val talentProfilesList4: ObservableArrayList<Feed2>
 ) :
     RecyclerView.Adapter<TopicsRecyclerViewAdapter.ViewHolder>(),
     TopicListEventListener {
