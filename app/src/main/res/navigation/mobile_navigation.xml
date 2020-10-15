@@ -18,6 +18,6 @@
 
     <fragment
         android:id="@+id/nav_short"
-        android:name="com.guiado.projectbox.view.FragmentShortStoriesActivity"
+        android:name="com.guiado.projectbox.view.FragmentCenters"
         android:label="@string/menu_home" />
 </navigation>

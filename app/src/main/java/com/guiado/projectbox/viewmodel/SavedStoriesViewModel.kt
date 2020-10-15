@@ -60,11 +60,6 @@ class SavedStoriesViewModel(
 
     init {
         talentProfilesList = ObservableArrayList<Feed>()
-
-
-
-
-
         val result: ArrayList<Feed> = SharedPrefUtil().getSharedPref(activity)
 
         talentProfilesList.addAll(result);

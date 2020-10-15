@@ -7,7 +7,7 @@
 
         <variable
             name="adSearchModel"
-            type="com.guiado.projectbox.viewmodel.TopicsViewModel" />
+            type="com.guiado.projectbox.viewmodel.CentersViewModel" />
 
         <variable
             name="countriesInfoModel"
@@ -38,14 +38,15 @@
                 android:paddingBottom="@dimen/dimen_4"
                 android:text="Projects" />
 
-            <androidx.appcompat.widget.SearchView
-                android:background="@color/colorWhite60"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimaryDark"
-                android:layout_width="match_parent"
+            <Spinner
+                android:layout_centerInParent="true"
+                android:layout_marginTop="@dimen/dimen_16"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/categorySpinner"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dimen_16"
-                android:text="Projects" />
+                android:entries="@array/Languages"
+                android:selectedItemPosition="@={adSearchModel.selectedItemPosition}"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerUser"

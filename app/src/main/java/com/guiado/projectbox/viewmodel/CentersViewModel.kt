@@ -8,18 +8,21 @@ import androidx.fragment.app.FragmentActivity
 import com.google.firebase.firestore.*
 import com.google.gson.Gson
 import com.guiado.projectbox.*
-import com.guiado.projectbox.model.Feed2
+import com.guiado.projectbox.R
+import com.guiado.projectbox.model.Feed33
+import com.guiado.projectbox.view.FragmentCenter
+import com.guiado.projectbox.view.FragmentCenters
 import com.guiado.projectbox.view.FragmentProoject
 import com.guiado.projectbox.view.FragmentTopics
 
-class TopicsViewModel(
+class CentersViewModel(
     internal var activity: FragmentActivity,
-    internal val fragmentProfileInfo: FragmentTopics,
+    internal val fragmentProfileInfo: FragmentCenters,
     internal val itempostion: Int
 ) // To show list of user images (Gallery)
     : BaseObservable() {
 
-    var talentProfilesList: ObservableArrayList<Feed2>
+    var talentProfilesList: ObservableArrayList<Feed33>
 
     var query: Query
 
@@ -31,6 +34,31 @@ class TopicsViewModel(
 
     companion object {
         private val TAG = "DiscussionModel"
+    }
+
+
+    private var selectedItemPosition = 0
+
+    @Bindable
+    fun getSelectedItemPosition(): Int {
+        return selectedItemPosition
+    }
+
+    fun setSelectedItemPosition(selectedItemPosition: Int) {
+        this.selectedItemPosition = selectedItemPosition
+        //Log.d("TAG, "Success getting OnClickListener: $selectedItemPosition")
+        notifyPropertyChanged(BR.selectedItemPosition)
+
+        if(this.selectedItemPosition != 0){
+            var ksk = activity.resources.getStringArray(R.array.Languages)
+
+            query = db.collection("centers").limit(20).whereEqualTo("location",ksk.get(selectedItemPosition).toLowerCase())
+            talentProfilesList.clear()
+            doGetTalents()
+
+        }
+
+
     }
 
 
@@ -60,7 +88,7 @@ class TopicsViewModel(
 
 
     init {
-        talentProfilesList = ObservableArrayList<Feed2>()
+        talentProfilesList = ObservableArrayList<Feed33>()
         db = FirebaseFirestore.getInstance()
 
 //        var pref = SharedPreference(activity.applicationContext).getValueString(LANGUAGE_ID)
@@ -76,7 +104,7 @@ class TopicsViewModel(
         title = titletopic.get(itempostion)
 
         //   query = db.collection("/NEWS/news_arabic/world").whereEqualTo(LANGUAGE_ID, pref).whereEqualTo("regionid", RegionEnum.NIL.name).orderBy("growZoneNumber", Query.Direction.DESCENDING).limit(20)
-        query = db.collection("chennai").limit(20)
+        query = db.collection("centers").limit(20)
 
         doGetTalents()
       //  kural = setQuote(activity)
@@ -84,15 +112,15 @@ class TopicsViewModel(
     }
 
 
-    fun openFragment55(postAdModel: Feed2) {
+    fun openFragment55(postAdModel: Feed33) {
         shareAppURL(postAdModel)
     }
 
 
-    private fun shareAppURL(articleUrl: Feed2?) {
+    private fun shareAppURL(articleUrl: Feed33?) {
         val sharingIntent = Intent(Intent.ACTION_SEND)
         sharingIntent.type = "text/plain"
-        val shareBody = articleUrl?.title+"\n"+articleUrl?.title+"\n\n For more articles : install our app https://play.google.com/store/apps/details?id=com.guiado.projectbox"
+        val shareBody = articleUrl?.name+"\n"+articleUrl?.name+"\n\n For more articles : install our app https://play.google.com/store/apps/details?id=com.guiado.projectbox"
         sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody)
         activity.startActivity(Intent.createChooser(sharingIntent, "Share via"))
     }
@@ -100,8 +128,8 @@ class TopicsViewModel(
 
 
 
-    fun openFragment3(postAdModel: Feed2) {
-        val intentNext = Intent(activity, FragmentProoject::class.java)
+    fun openFragment3(postAdModel: Feed33) {
+        val intentNext = Intent(activity, FragmentCenter::class.java)
         var gson = Gson()
 
         intentNext.putExtra("feed", gson.toJson(postAdModel))
@@ -122,9 +150,9 @@ class TopicsViewModel(
 
     fun addTalentsItems(document: QueryDocumentSnapshot) {
 
-        val adModel = document.toObject(Feed2::class.java)
+        val adModel = document.toObject(Feed33::class.java)
 
-        Log.d(TAG, "Success getting documents: " + adModel.title)
+        Log.d(TAG, "Success getting documents: " + adModel.name)
 
         //  if (!adModel.postedBy.equals(mAuth.currentUser!!.uid) && (adModel.eventState.ordinal == EventStatus.SHOWING.ordinal)) {
 
@@ -150,16 +178,16 @@ class TopicsViewModel(
             }
 
             if (querySnapshot == null) {
-                Log.i(TAG, "Listen querySnapshot end")
+                Log.i(TAG, "Listen querySnapshot enda")
                 return@addSnapshotListener
             }
 
             if (querySnapshot.size() < 1) {
-                Log.i(TAG, "Listen querySnapshot end")
+                Log.i(TAG, "Listen querySnapshot endb")
                 return@addSnapshotListener
             }
 
-            Log.w(TAG, "Listen querySnapshot end" + querySnapshot.size())
+            Log.w(TAG, "Listen querySnapshot end-" + querySnapshot.size())
 
             val lastVisible = querySnapshot.documents[querySnapshot.size() - 1]
 
@@ -187,14 +215,6 @@ class TopicsViewModel(
     }
 
 
-    fun addTalentsItems2(document: QueryDocumentSnapshot) {
 
-        quoteimg = document.data.get("imgurl").toString()
-
-        Log.d(TAG, "Success rachu documents: " + quoteimg)
-
-        //  if (!adModel.postedBy.equals(mAuth.currentUser!!.uid) && (adModel.eventState.ordinal == EventStatus.SHOWING.ordinal)) {
-
-    }
 
 }

@@ -96,8 +96,6 @@ fun adapter8(recyclerView: RecyclerView, countriesViewModel: SavedStoriesViewMod
 
 
 
-
-
 @BindingAdapter("app:searchRecycler4")
 fun adapter6(recyclerView: RecyclerView, countriesViewModel: TopicsViewModel) {
 
@@ -109,6 +107,81 @@ fun adapter6(recyclerView: RecyclerView, countriesViewModel: TopicsViewModel) {
     )
     val bindingAdapter =
         RecyclerLoadMoreTopicsHandler(
+            countriesViewModel,
+            listAdapter
+        )
+    bindingAdapter.scrollListener(recyclerView, linearLayoutManager)
+    //val snapHelper: SnapHelper = PagerSnapHelper()
+    //snapHelper.attachToRecyclerView(recyclerView)
+
+    recyclerView.layoutManager = linearLayoutManager as RecyclerView.LayoutManager
+    recyclerView.adapter = listAdapter
+    countriesViewModel.talentProfilesList.addOnListChangedCallback(object :
+        ObservableList.OnListChangedCallback<ObservableList<String>>() {
+        override fun onItemRangeRemoved(
+            sender: ObservableList<String>?,
+            positionStart: Int,
+            itemCount: Int
+        ) {
+            Log.d("rach", "rach1")
+        }
+
+        override fun onItemRangeMoved(
+            sender: ObservableList<String>?,
+            fromPosition: Int,
+            toPosition: Int,
+            itemCount: Int
+        ) {
+            Log.d("rach", "rach2")
+        }
+
+        override fun onItemRangeInserted(
+            sender: ObservableList<String>?,
+            positionStart: Int,
+            itemCount: Int
+        ) {
+            Log.d("rach", "rach3")
+            bindingAdapter.resetRecycleView(recyclerView)
+            if (countriesViewModel.resetScrrollListener) {
+                bindingAdapter.scrollListener(recyclerView, linearLayoutManager)
+                countriesViewModel.resetScrrollListener = false
+            }
+
+        }
+
+        override fun onItemRangeChanged(
+            sender: ObservableList<String>?,
+            positionStart: Int,
+            itemCount: Int
+        ) {
+            Log.d("rach", "rach4")
+            bindingAdapter.resetRecycleView(recyclerView)
+        }
+
+        override fun onChanged(sender: ObservableList<String>?) {
+            Log.d("rach", "rach5")
+            bindingAdapter.resetRecycleView(recyclerView)
+        }
+
+    });
+
+}
+
+
+
+
+
+@BindingAdapter("app:searchRecycler4")
+fun adapter6(recyclerView: RecyclerView, countriesViewModel: CentersViewModel) {
+
+    val linearLayoutManager =
+        LinearLayoutManager(recyclerView.context)//, LinearLayoutManager.HORIZONTAL, false);
+    val listAdapter = CentersRecyclerViewAdapter(
+        countriesViewModel,
+        countriesViewModel.talentProfilesList
+    )
+    val bindingAdapter =
+        RecyclerLoadMoreCentrsHandler(
             countriesViewModel,
             listAdapter
         )
