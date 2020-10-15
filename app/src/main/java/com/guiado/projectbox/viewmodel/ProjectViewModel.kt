@@ -1,17 +1,19 @@
 package com.guiado.projectbox.viewmodel
 
 import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import android.view.View
+import androidx.core.content.ContextCompat.startActivity
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import androidx.fragment.app.FragmentActivity
-import com.google.firebase.firestore.*
 import com.guiado.projectbox.BR
 import com.guiado.projectbox.model.Feed
 import com.guiado.projectbox.model.Feed2
 import com.guiado.projectbox.view.FragmentProoject
 import com.guiado.projectbox.view.FragmentTopics
+
 
 class ProjectViewModel(
     internal var activity: FragmentActivity,
@@ -75,16 +77,18 @@ class ProjectViewModel(
     @Override
     fun onNextButtonClick() = View.OnClickListener() {
         Log.d(TAG, "Success getting OnClickListener: ")
-
+        val uri = feed2.maplocation
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
+        activity.startActivity(intent)
     }
 
 
 
     @Override
     fun onNextButtonClick2() = View.OnClickListener() {
-//        Log.d(TAG, "Success getting OnClickListener: ")
-//        val intentNext = Intent(activity, FragmentShortStories::class.java)
-//        activity.startActivity(intentNext)
+        val intent = Intent(Intent.ACTION_DIAL)
+        intent.data = Uri.parse("tel:"+feed2.contact)
+        activity.startActivity(intent)
     }
 
     var counter =0;

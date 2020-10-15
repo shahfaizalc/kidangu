@@ -110,13 +110,31 @@ class TopicsViewModel(
 
 
 
+    fun doGetTalentsSearch(searchQuery: String) {
+        query = db.collection("discussion")
+            .whereArrayContainsAny("searchTags", getCommbinationWords(searchQuery).toList())
+            .limit(20)
+
+        Log.d(TAG, "DOIT doGetTalentsSearch: ")
+        talentProfilesList.removeAll(talentProfilesList)
+        doGetTalents()
+
+    }
+
+    private fun getCommbinationWords(s: String): List<String> {
+        val list1 = s.sentenceToWords()
+        Log.d("list2", "indian" + list1)
+        return list1
+    }
+
+
 
 
     @Override
     fun onNextButtonClick() = View.OnClickListener() {
         Log.d(TAG, "Success getting OnClickListener: ")
 
-
+        doGetTalentsSearch(name)
     }
 
 

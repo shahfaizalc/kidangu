@@ -36,7 +36,8 @@
                 android:layout_marginStart="@dimen/dimen_16"
                 android:layout_marginTop="@dimen/dimen_16"
                 android:paddingBottom="@dimen/dimen_4"
-                android:text="Projects" />
+                android:textSize="@dimen/dimen_16"
+                android:text="Project Centers" />
 
             <Spinner
                 android:layout_centerInParent="true"

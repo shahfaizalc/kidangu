@@ -39,13 +39,14 @@
                 android:text="Projects" />
 
             <androidx.appcompat.widget.SearchView
+                android:onClick="@{adSearchModel.onNextButtonClick()}"
                 android:background="@color/colorWhite60"
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/dimen_16"
-                android:text="Projects" />
+                android:text="@{adSearchModel.name}" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerUser"

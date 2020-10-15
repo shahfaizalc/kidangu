@@ -143,6 +143,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="@dimen/dimen_8"
+            android:onClick="@{adSearchModel.onNextButtonClick2()}"
             card_view:cardCornerRadius="@dimen/dimen_16">
 
             <LinearLayout
@@ -221,6 +222,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="@dimen/dimen_8"
+            android:onClick="@{adSearchModel.onNextButtonClick()}"
             card_view:cardCornerRadius="@dimen/dimen_16">
 
             <LinearLayout
@@ -248,7 +250,7 @@
                     android:layout_marginStart="@dimen/dimen_16"
                     android:layout_marginTop="@dimen/dimen_16"
                     android:paddingBottom="@dimen/dimen_4"
-                    android:text="@{countriesInfoModel.maplocation}" />
+                    android:text="Launch map location" />
 
 
             </LinearLayout>

@@ -260,6 +260,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="@dimen/dimen_8"
+            android:onClick="@{adSearchModel.onNextButtonClick2()}"
             card_view:cardCornerRadius="@dimen/dimen_16">
 
             <LinearLayout
@@ -336,6 +337,7 @@
 
 
         <androidx.cardview.widget.CardView
+            android:onClick="@{adSearchModel.onNextButtonClick()}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
