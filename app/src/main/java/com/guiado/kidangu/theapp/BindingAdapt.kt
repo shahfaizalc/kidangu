@@ -697,20 +697,23 @@ fun adapter(recyclerView: RecyclerView, countriesViewModel: WorldViewModel) {
 fun loadImage(view: ImageView, imageUrl: String?) {
     val i = TextUtils.isEmpty(imageUrl)
 
+
     if (i) {
-        view.setImageDrawable(view.getContext().getDrawable(R.drawable.ic_launcher_background))
+        view.setImageDrawable(view.context.getDrawable(R.drawable.ic_menu_manage))
     } else {
         val radius = 30
         val margin = 30
         val transformation: Transformation = RoundedCornersTransformation(radius, margin)
         Picasso.get()
             .load(imageUrl)
-            .error(R.drawable.ic_launcher_foreground)
-            .placeholder(R.drawable.ic_launcher_foreground)
+            .error(R.drawable.seven)
+            .placeholder(R.drawable.ic_menu_share)
             .transform(transformation)
             .into(view)
-//
-//
+
+        Log.d("TAGGER", "TAGGii " + imageUrl)
+
+
 //        Glide.with(view.context)
 //            .load(imageUrl)
 //            .placeholder(R.drawable.ic_launcher_foreground)

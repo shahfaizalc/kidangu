@@ -31,16 +31,20 @@ class NewsRecyclerViewAdapter(
         parent.context), parent, false))
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        Log.d("viewed","view")
+        Log.d("viewed","vieweee")
         val viewModel = newsViewModel
-        viewHolder.binding.simpleListAdapter = this
         with(viewHolder.binding) {
+            Log.d("viewed","vieweede "+talentProfilesList4[position].baseurl)
             countriesInfoModel = talentProfilesList4[(position)]
             itemPosition = position
             mainDataModel = viewModel
-            executePendingBindings()
+            postDate = talentProfilesList4[position].baseurl
+            keyWordsTag = talentProfilesList4[position].imageurl
         }
-        viewHolder.binding.setItemClickListener(this)
+        viewHolder.binding.simpleListAdapter = this
+        viewHolder.binding.itemClickListener = this
+        viewHolder.binding.executePendingBindings()
+
     }
 
     override fun getItemCount() = talentProfilesList4.size
