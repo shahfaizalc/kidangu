@@ -38,24 +38,39 @@
                 android:paddingBottom="@dimen/dimen_4"
                 android:text="Projects" />
 
-            <androidx.appcompat.widget.SearchView
-                android:onClick="@{adSearchModel.onNextButtonClick()}"
-                android:background="@color/colorWhite60"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimaryDark"
+            <RelativeLayout
+                android:id="@+id/content"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dimen_16"
-                android:text="@{adSearchModel.name}" />
+                android:layout_height="match_parent"
+                android:animateLayoutChanges="true"
+                android:background="@color/colorWhite60">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerUser"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:paddingBottom="@dimen/dimen_20"
-                android:scrollbars="vertical"
-                app:searchRecycler4="@{adSearchModel}" />
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/search1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="@dimen/dimen_8"
+                    android:layout_marginStart="@dimen/dimen_8"
+                    android:layout_marginEnd="@dimen/dimen_8"
+                    android:background="@color/colorWhite25"
+                    android:clickable="true"
+                    app:searchRecycler4="@{recylerView}"
+                    app:searchAdapter="@{adSearchModel}"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_marginTop="@dimen/dimen_8"
+                    android:layout_below="@+id/search1"
+                    android:id="@+id/recylerView"
+                    android:background="@color/colorWhite50"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingStart="@dimen/dimen_8"
+                    android:paddingEnd="@dimen/dimen_8"
+                    android:scrollbars="vertical"/>
+
+            </RelativeLayout>
+
 
             <LinearLayout
                 android:id="@+id/banner_container"

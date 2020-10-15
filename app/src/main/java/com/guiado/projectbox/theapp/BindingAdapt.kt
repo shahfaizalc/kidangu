@@ -10,6 +10,7 @@ import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.TextView.BufferType
+import androidx.appcompat.widget.SearchView
 import androidx.databinding.BindingAdapter
 import androidx.databinding.ObservableList
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -94,10 +95,9 @@ fun adapter8(recyclerView: RecyclerView, countriesViewModel: SavedStoriesViewMod
 }
 
 
-
-
-@BindingAdapter("app:searchRecycler4")
-fun adapter6(recyclerView: RecyclerView, countriesViewModel: TopicsViewModel) {
+@BindingAdapter("app:searchAdapter", "app:searchRecycler4")
+fun adapter(searchView: SearchView, countriesViewModel: TopicsViewModel, recyclerView: RecyclerView)
+{
 
     val linearLayoutManager =
         LinearLayoutManager(recyclerView.context)//, LinearLayoutManager.HORIZONTAL, false);

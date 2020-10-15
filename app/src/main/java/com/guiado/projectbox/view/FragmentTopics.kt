@@ -13,8 +13,6 @@ class  FragmentTopics : AppCompatActivity() {
     @Transient
     var binding: ContenttopicsBinding? = null;
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (binding == null) {
