@@ -6,10 +6,8 @@ import android.view.View
 import androidx.databinding.*
 import androidx.fragment.app.FragmentActivity
 import com.google.firebase.firestore.*
-import com.google.gson.Gson
 import com.guiado.kidangu.*
 import com.guiado.kidangu.model.Feed
-import com.guiado.kidangu.model.Kural
 import com.guiado.kidangu.view.FragmentSavedStories
 import com.guiado.kidangu.view.FragmentWorld
 
@@ -31,6 +29,14 @@ class SavedStoriesViewModel(
 
 
     @get:Bindable
+    var itemVisibility: Int = View.VISIBLE
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.itemVisibility)
+        }
+
+
+    @get:Bindable
     var name: String = String()
         set(value) {
             field = value
@@ -42,6 +48,12 @@ class SavedStoriesViewModel(
         shareAppURL(postAdModel)
     }
 
+    fun openFragment65(postAdModel: Feed) {
+
+        SharedPrefUtil().removeSharedPref(activity,postAdModel)
+        itemVisibility  = View.GONE
+        refreshList(postAdModel)
+    }
 
     private fun shareAppURL(articleUrl: Feed?) {
         val sharingIntent = Intent(Intent.ACTION_SEND)
@@ -65,15 +77,18 @@ class SavedStoriesViewModel(
         talentProfilesList = ObservableArrayList<Feed>()
 
 
-
-
-
         val result: ArrayList<Feed> = SharedPrefUtil().getSharedPref(activity)
 
         talentProfilesList.addAll(result);
 
 
     }
+
+   fun refreshList(postAdModel: Feed) {
+       talentProfilesList.remove(postAdModel);
+   }
+
+
 
 
     fun openShare(postAdModel: Feed, position: Int) {

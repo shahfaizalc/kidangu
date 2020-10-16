@@ -31,6 +31,9 @@
             name="postDate"
             type="java.lang.String" />
 
+        <variable
+            name="itemVisibility"
+            type="java.lang.Integer" />
 
     </data>
 
@@ -85,6 +88,18 @@
                             android:textSize="@dimen/dimen_12" />
 
                         <ImageView
+                            android:id="@+id/saving"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toStartOf="@id/shareimg"
+                            android:layout_centerVertical="true"
+                            android:onClick="@{() -> itemClickListener.launchSave(mainDataModel,itemPosition)}"
+                            android:paddingStart="@dimen/dimen_4"
+                            android:paddingEnd="@dimen/dimen_4"
+                            android:paddingBottom="@dimen/dimen_4"
+                            android:src="@drawable/content_save_off" />
+
+                        <ImageView
                             android:id="@+id/shareimg"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -110,7 +125,7 @@
                         android:maxLines="2"
                         android:onClick="@{() -> itemClickListener.onClickAdSearchListItem(mainDataModel,itemPosition)}"
                         android:text="@{countriesInfoModel.title}"
-                        android:textSize="@dimen/dimen_20"
+                        android:textSize="@dimen/dimen_16"
                         android:textStyle="bold" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"

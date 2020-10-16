@@ -2,6 +2,7 @@ package com.guiado.kidangu
 
 import android.app.Activity
 import android.content.Context
+import android.widget.Toast
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.guiado.kidangu.model.Feed
@@ -22,6 +23,32 @@ class SharedPrefUtil {
 
         if (count == 0) {
             result.add(item)
+            val gsonData = Gson().toJson(result)
+
+            val sharedPreferences =
+                activity.getSharedPreferences("production", Context.MODE_PRIVATE)
+
+            sharedPreferences.edit().putString(key, gsonData).apply()
+            Toast.makeText(activity,"Saved Successfully.",Toast.LENGTH_LONG).show()
+
+        }
+
+    }
+
+    fun removeSharedPref(activity: Activity, item: Feed) {
+        val result: ArrayList<Feed> = getSharedPref(activity)
+
+        var value  = Feed()
+        var count = 0
+        for(res in result) {
+            if (res.articleUrl?.equals(item.articleUrl)!!) {
+                value = (res)
+                count++
+            }
+        }
+
+        if (count != 0) {
+            result.remove(value)
             val gsonData = Gson().toJson(result)
 
             val sharedPreferences =

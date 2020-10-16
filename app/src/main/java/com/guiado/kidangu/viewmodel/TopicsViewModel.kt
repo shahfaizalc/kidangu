@@ -113,7 +113,8 @@ class TopicsViewModel(
 
     fun openFragment3(postAdModel: Feed) {
         val intentNext = Intent(activity, FragmentWorld::class.java)
-        intentNext.putExtra("feed", postAdModel)
+        var gson = Gson();
+        intentNext.putExtra("feed", gson.toJson(postAdModel))
         activity.startActivity(intentNext)
     }
 

@@ -2,6 +2,7 @@ package com.guiado.kidangu.adapter
 
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.ObservableArrayList
 import androidx.recyclerview.widget.RecyclerView
@@ -10,6 +11,7 @@ import com.guiado.kidangu.listeners.ShortsEventListener
 import com.guiado.kidangu.databinding.ListItemShortsBinding
 import com.guiado.kidangu.listeners.SavedEventListener
 import com.guiado.kidangu.model.Feed
+import com.guiado.kidangu.viewmodel.HomeViewModel
 import com.guiado.kidangu.viewmodel.SavedStoriesViewModel
 import com.guiado.kidangu.viewmodel.ShortStoriesViewModel
 
@@ -41,6 +43,7 @@ class SavedStoriesRecyclerViewAdapter(
             countriesInfoModel = talentProfilesList4[(position)]
             itemPosition = position
             mainDataModel = viewModel
+          //  itemVisibility = View.VISIBLE
             executePendingBindings()
         }
         viewHolder.binding.setItemClickListener(this)
@@ -61,6 +64,13 @@ class SavedStoriesRecyclerViewAdapter(
 
     override fun launchShare(countriesViewModel: SavedStoriesViewModel, position: Int) {
         countriesViewModel.openFragment55(talentProfilesList4[position])
+
+    }
+
+    override fun launchSave(countriesViewModel: SavedStoriesViewModel, position: Int) {
+        countriesViewModel.openFragment65(talentProfilesList4[position])
+        notifyDataSetChanged()
+
 
     }
 }

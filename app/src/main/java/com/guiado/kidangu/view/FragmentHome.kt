@@ -28,16 +28,16 @@ class  FragmentHome : Fragment() {
 
     private fun bindView(inflater: LayoutInflater, container: ViewGroup?): View {
         if (binding == null) {
-            binding = DataBindingUtil.inflate<ContenthomeBinding>(inflater, R.layout.contenthome, container, false)
+            binding = DataBindingUtil.inflate(inflater, R.layout.contenthome, container, false)
             val areaViewModel =
                 HomeViewModel(
                     requireActivity(),
                     this
                 )
             binding?.adSearchModel = areaViewModel
+            adViewLoad(binding!!.root)
 
         }
-        adViewLoad(binding!!.root)
 
         return binding!!.root
     }

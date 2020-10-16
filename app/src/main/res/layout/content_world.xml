@@ -71,7 +71,7 @@
                         android:paddingStart="@dimen/dimen_4"
                         android:paddingEnd="@dimen/dimen_4"
                         android:paddingBottom="@dimen/dimen_4"
-                        android:text="@{countriesInfoModel.baseurl}" />
+                        android:text="@{countriesInfoModel.author}" />
                 </RelativeLayout>
 
 
@@ -109,10 +109,9 @@
                         android:autoLink="web|email"
                         android:ellipsize="end"
                         android:linksClickable="true"
-                        android:maxLines="2"
+                        android:maxLines="3"
                         android:minHeight="@dimen/dimen_48"
                         android:text="@{countriesInfoModel.title}"
-                        android:textSize="@dimen/dimen_20"
                         android:textStyle="bold" />
 
                 </LinearLayout>

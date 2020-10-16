@@ -127,7 +127,6 @@
                         android:maxLines="2"
                         android:onClick="@{() -> itemClickListener.onClickAdSearchListItem(mainDataModel,itemPosition)}"
                         android:text="@{countriesInfoModel.title}"
-                        android:textSize="@dimen/dimen_20"
                         android:textStyle="bold" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
