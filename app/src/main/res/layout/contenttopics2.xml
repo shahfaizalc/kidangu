@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="adSearchModel"
+            type="com.guiado.projectbox.viewmodel.Topics2ViewModel" />
+
+        <variable
+            name="countriesInfoModel"
+            type="com.guiado.projectbox.model.Feed" />
+    </data>
+
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/viewA"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorCement"
+            android:orientation="vertical">
+
+
+            <TextView
+              android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_16"
+                android:layout_marginTop="@dimen/dimen_16"
+                android:paddingBottom="@dimen/dimen_4"
+                android:text="Projects" />
+
+            <RelativeLayout
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:animateLayoutChanges="true"
+                android:background="@color/colorWhite60">
+
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/search1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="@dimen/dimen_8"
+                    android:layout_marginStart="@dimen/dimen_8"
+                    android:layout_marginEnd="@dimen/dimen_8"
+                    android:background="@color/colorWhite25"
+                    android:clickable="true"
+                    app:searchRecycler4="@{recylerView}"
+                    app:searchAdapter="@{adSearchModel}"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_marginTop="@dimen/dimen_8"
+                    android:layout_below="@+id/search1"
+                    android:id="@+id/recylerView"
+                    android:background="@color/colorWhite50"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingStart="@dimen/dimen_8"
+                    android:paddingEnd="@dimen/dimen_8"
+                    android:scrollbars="vertical"/>
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:id="@+id/banner_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/dimen_8"
+                android:layout_marginBottom="@dimen/dimen_4"
+                />
+
+
+        </LinearLayout>
+    </ScrollView>
+</layout>
